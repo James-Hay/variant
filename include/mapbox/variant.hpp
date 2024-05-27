@@ -684,10 +684,6 @@ public:
         {
             return *reinterpret_cast<T*>(&data);
         }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
-        }
     }
 #endif
 
@@ -706,10 +702,6 @@ public:
         if (type_index == detail::direct_type<T, Types...>::index)
         {
             return *reinterpret_cast<T const*>(&data);
-        }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
         }
     }
 #endif
@@ -732,10 +724,6 @@ public:
         {
             return (*reinterpret_cast<recursive_wrapper<T>*>(&data)).get();
         }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
-        }
     }
 #endif
 
@@ -754,10 +742,6 @@ public:
         if (type_index == detail::direct_type<recursive_wrapper<T>, Types...>::index)
         {
             return (*reinterpret_cast<recursive_wrapper<T> const*>(&data)).get();
-        }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
         }
     }
 #endif
@@ -780,10 +764,6 @@ public:
         {
             return (*reinterpret_cast<std::reference_wrapper<T>*>(&data)).get();
         }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
-        }
     }
 #endif
 
@@ -802,10 +782,6 @@ public:
         if (type_index == detail::direct_type<std::reference_wrapper<T const>, Types...>::index)
         {
             return (*reinterpret_cast<std::reference_wrapper<T const> const*>(&data)).get();
-        }
-        else
-        {
-            throw bad_variant_access("in get<T>()");
         }
     }
 #endif

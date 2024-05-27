@@ -26,9 +26,6 @@ public:
     using result_type = T&;
     template <class V>
     T& operator()(V& v, typename std::enable_if<!std::is_polymorphic<V>::value>::type* = nullptr) const
-    {
-        throw std::bad_cast();
-    }
     template <class V>
     T& operator()(V& v, typename std::enable_if<std::is_polymorphic<V>::value>::type* = nullptr) const
     {
